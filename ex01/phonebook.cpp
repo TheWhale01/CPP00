@@ -1,5 +1,4 @@
 #include <iomanip>
-#include <sstream>
 #include <cstring>
 #include <stdlib.h>
 #include "phonebook.hpp"
@@ -54,23 +53,22 @@ void	PhoneBook::search(void)
 {
 	int index;
 	std::string line;
-	std::string str_index;
-	std::stringstream ss;
 
-	std::cout << "|-------------------------------------------|" <<std::endl;
+	std::cout << "|-------------------------------------------|" << std::endl;
     std::cout << "|   Index  |first name|last name | nickname |" << std::endl;
-    std::cout << "|----------|----------|----------|----------|" <<std::endl;
+    std::cout << "|----------|----------|----------|----------|" << std::endl;
 	for (int i = 0; i < this->_nb_contacts; i++)
 	{
-		ss << (i + 1);
-		ss >> str_index;
-		this->_print_info(str_index);
+		std::cout << "|" << std::setw(10) << std::setfill(' ') << i + 1;
 		this->_print_info(this->_contacts[i].first_name);
 		this->_print_info(this->_contacts[i].last_name);
 		this->_print_info(this->_contacts[i].nickname);
 		std::cout << "|" << std::endl;
 	}
-	std::cout << "|-------------------------------------------|\nPlease enter an index : ";
+	std::cout << "|-------------------------------------------|" << std::endl;
+	if (!this->_nb_contacts)
+		return ;
+	std::cout << "Please enter an index : ";
 	std::getline(std::cin, line);
 	index = atoi(line.c_str());
 	if (index > this->_nb_contacts || index <= 0)
