@@ -24,6 +24,7 @@ class PhoneBook
 	private:
 		int		_nb_contacts;
 		Contact _contacts[8];
+		void	_print_info(std::string str);
 };
 
 #endif

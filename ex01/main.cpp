@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string.h>
 #include "phonebook.hpp"
 
 int main(void)
@@ -6,10 +7,11 @@ int main(void)
 	PhoneBook phonebook;
 	std::string entry;
 
-	std::cout << "Welcome to the PhoneBook !" << std::endl;
+	std::cout << "Welcome to the PhoneBook !\nPlease type (ADD, SEARCH, EXIT)\n" << std::endl;
 	while (1)
 	{
-		std::cin >> entry;
+		std::cout << "PhoneBook> ";
+		getline(std::cin, entry);
 		if (!entry.compare("EXIT"))
 			return (0);
 		else if (!entry.compare("ADD"))
